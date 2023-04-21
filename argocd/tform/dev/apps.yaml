@@ -1,0 +1,19 @@
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dev-app-of-apps
+  namespace: argocd
+spec:
+  destination:
+    namespace: argocd
+    server: https://kubernetes.default.svc
+  project: my-project
+  source:
+    repoURL: https://github.com/merikan/gitops
+    path: argocd/envs/tform/dev/apps
+    targetRevision: main
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
