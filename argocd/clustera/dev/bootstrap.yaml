@@ -1,8 +1,7 @@
-
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: clustera-dev-apps-bootstrap
+  name: myapps-clustera-dev-bootstrap
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -13,7 +12,7 @@ spec:
   project: my-project
   source:
     repoURL: https://github.com/merikan/gitops
-    path: argocd/cluster-a/dev/apps
+    path: argocd/clustera/dev/apps
     targetRevision: main
   syncPolicy:
     automated:

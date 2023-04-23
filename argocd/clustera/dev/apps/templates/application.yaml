@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $app.name }}
+  name: {{ $.Values.prefix }}{{ $app.name }}
   namespace: {{ $.Release.Namespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
