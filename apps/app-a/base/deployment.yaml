@@ -6,15 +6,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: appa-a
+      app: app-a
   template:
     metadata:
       labels:
-        app: appa-a
+        app: app-a
     spec:
       containers:
         - image: kennethreitz/httpbin
           imagePullPolicy: IfNotPresent
-          name: appa-a
+          name: app-a
           ports:
             - containerPort: 80
