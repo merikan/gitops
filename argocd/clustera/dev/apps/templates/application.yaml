@@ -18,8 +18,8 @@ spec:
     path: {{ $app.path }}
     repoURL: {{ $.Values.gitops.repo }}
     targetRevision: {{ $.Values.gitops.revision }}
-      # namespace: {{ default $.Values.namespace $app.namespace }}
     kustomize:
+      # namespace: {{ default $.Values.namespace $app.namespace }} is added to argocd 2.7
       namePrefix: dev-
       commonAnnotations:
         beep: boop
