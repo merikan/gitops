@@ -18,6 +18,10 @@ spec:
     path: {{ $app.path }}
     repoURL: {{ $.Values.gitops.repo }}
     targetRevision: {{ $.Values.gitops.revision }}
+    kustomize:
+      # Supported kustomize transformers. https://kubectl.docs.kubernetes.io/references/kustomize/kustomization/
+      #labels:
+      namespace: {{ default $.Values.namespace $app.namespace }}
   syncPolicy:
     automated:
       prune: true
