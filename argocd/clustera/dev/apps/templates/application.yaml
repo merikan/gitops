@@ -20,9 +20,9 @@ spec:
     targetRevision: {{ $.Values.gitops.revision }}
     kustomize:
       # namespace: {{ default $.Values.namespace $app.namespace }} is added to argocd 2.7
-      namePrefix: dev-
       commonAnnotations:
-        beep: boop
+        app.kubernetes.io/managed-by: argocd
+        app.kubernetes.io/part-of: {{ $.Values.partOf }}
   syncPolicy:
     automated:
       prune: true

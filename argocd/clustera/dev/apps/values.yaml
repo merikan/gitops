@@ -4,6 +4,7 @@ gitops:
 
 namespace: myapps-dev
 prefix: myapps-clustera-dev-
+partOf: myapps
 
 # List of applications
 apps:
@@ -12,8 +13,8 @@ apps:
     syncWave: 0
   - name: app-b
     path: apps/app-b/envs/dev
-    # syncWave: 0
+    syncWave: 0
   - name: app-c
     path: apps/app-c/envs/dev
     namespace: myapps-dev2
-    syncWave: 0
+    syncWave: 3
