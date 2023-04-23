@@ -2,18 +2,17 @@ gitops:
   repo: https://github.com/merikan/gitops
   revision: main
 
-namespace: myapp-default
+namespace: myapps-dev
 
 # List of applications
 apps:
   - name: app-a
     path: apps/app-a/envs/dev
-    namespace: myapp
     syncWave: 0
   - name: app-b
     path: apps/app-b/envs/dev
-    namespace: myapp
     syncWave: 0
   - name: app-c
     path: apps/app-c/envs/dev
+    namespace: myapps-dev2
     syncWave: 0

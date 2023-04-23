@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: dev-appsbundle
+  name: clustera-dev-apps-bootstrap
   namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
