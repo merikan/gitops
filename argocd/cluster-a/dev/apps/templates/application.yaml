@@ -9,9 +9,9 @@ metadata:
     argocd.argoproj.io/sync-wave: '{{ default 0 $app.syncWave }}'
 spec:
   destination:
-    namespace: {{ $app.namespace }}
+    namespace: {{ default $namespace $app.namespace }}
     server: https://kubernetes.default.svc
-  project: default
+  project: my-project
   source:
     path: {{ $app.path }}
     repoURL: {{ $.Values.gitops.repo }}
@@ -20,14 +20,4 @@ spec:
     automated:
       prune: true
       selfHeal: true
-    retry:
-      limit: 10
-      backoff:
-        duration: 1m
-        maxDuration: 16m
-        factor: 2
-    syncOptions:
-    - CreateNamespace=true
-    - ServerSideApply=true
-    - ApplyOutOfSyncOnly=true
 {{- end }}
