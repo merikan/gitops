@@ -1,0 +1,16 @@
+gitops:
+  repo: https://github.com/merikan/gitops
+  revision: main
+
+namespace: 
+
+# List of applications
+apps:
+  - name: app-a
+    path: apps/app-a/envs/dev
+    namespace: myapp
+    syncWave: 0
+  - name: app-b
+    path: apps/app-b/envs/dev
+    namespace: myapp
+    syncWave: 0

@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: httpbin2
+  name: app-b
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: httpbin2
+      app: app-b
   template:
     metadata:
       labels:
-        app: httpbin2
+        app: app-b
     spec:
       containers:
         - image: kennethreitz/httpbin
           imagePullPolicy: IfNotPresent
-          name: httpbin2
+          name: app-b
           ports:
             - containerPort: 80
