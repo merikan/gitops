@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $.Values.app.prefix }}{{ $app.name }}
+  name: {{ $.Values.argoApp.prefix }}{{ $app.name }}
   namespace: {{ $.Release.Namespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -13,11 +13,11 @@ spec:
   destination:
     namespace: {{ default $.Values.app.namespace $app.namespace }}
     server: https://kubernetes.default.svc
-  project: my-project
+  project: form
   source:
     path: {{ $app.path }}
-    repoURL: {{ $.Values.gitops.repo }}
-    targetRevision: {{ $.Values.gitops.revision }}
+    repoURL: {{ $.Values.app.repo }}
+    targetRevision: {{ $.Values.app.revision }}
     kustomize:
       # namespace: {{ default $.Values.app.namespace $app.namespace }} is added to argocd 2.7
       commonAnnotations:

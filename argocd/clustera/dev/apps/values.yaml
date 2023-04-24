@@ -1,10 +1,12 @@
-gitops:
+# argo app defaults
+argoApp:
+  prefix: myapps-clustera-dev-
+
+# default for applications
+app:
   repo: https://github.com/merikan/gitops
   revision: main
-
-app:
   namespace: myapps-dev
-  prefix: myapps-clustera-dev-
   partOf: myapps
 
 # List of applications
