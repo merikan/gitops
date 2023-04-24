@@ -3,7 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ $.Values.prefix }}{{ $app.name }}
+  name: {{ $.Values.app.prefix }}{{ $app.name }}
   namespace: {{ $.Release.Namespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
@@ -11,7 +11,7 @@ metadata:
     argocd.argoproj.io/sync-wave: '{{ default 0 $app.syncWave }}'
 spec:
   destination:
-    namespace: {{ default $.Values.namespace $app.namespace }}
+    namespace: {{ default $.Values.app.namespace $app.namespace }}
     server: https://kubernetes.default.svc
   project: my-project
   source:
@@ -19,10 +19,10 @@ spec:
     repoURL: {{ $.Values.gitops.repo }}
     targetRevision: {{ $.Values.gitops.revision }}
     kustomize:
-      # namespace: {{ default $.Values.namespace $app.namespace }} is added to argocd 2.7
+      # namespace: {{ default $.Values.app.namespace $app.namespace }} is added to argocd 2.7
       commonAnnotations:
         app.kubernetes.io/managed-by: argocd
-        app.kubernetes.io/part-of: {{ $.Values.partOf }}
+        app.kubernetes.io/part-of: {{ $.Values.app.partOf }}
   syncPolicy:
     automated:
       prune: true

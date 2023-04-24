@@ -2,9 +2,10 @@ gitops:
   repo: https://github.com/merikan/gitops
   revision: main
 
-namespace: myapps-dev
-prefix: myapps-clustera-dev-
-partOf: myapps
+app:
+  namespace: myapps-dev
+  prefix: myapps-clustera-dev-
+  partOf: myapps
 
 # List of applications
 apps:
