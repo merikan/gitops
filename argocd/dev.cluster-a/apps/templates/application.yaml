@@ -4,7 +4,8 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $.Values.argoApp.prefix }}{{ $app.name }}
-  namespace: {{ $.Release.Namespace }}
+  # namespace: {{ default $.Values.app.namespace $app.namespace }}
+  # namespace: {{ $.Release.Namespace }}
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   annotations:
@@ -25,6 +26,7 @@ spec:
         app.kubernetes.io/part-of: {{ $.Values.app.partOf }}
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
+      prune: {{ default $.Values.app.prune $app.prune }}
+      selfHeal: {{ default $.Values.app.selfHeal $app.selfHeal }}
 {{- end }}
+
