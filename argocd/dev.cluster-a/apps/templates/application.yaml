@@ -5,16 +5,16 @@ kind: Application
 metadata:
   name: {{ $.Values.argoApp.prefix }}{{ $app.name }}
   # namespace: {{ default $.Values.app.namespace $app.namespace }}
-  # namespace: {{ $.Release.Namespace }}
-  finalizers:
-  - resources-finalizer.argocd.argoproj.io
+  namespace: {{ $.Release.Namespace }}
+  # finalizers:
+  # - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: '{{ default 0 $app.syncWave }}'
 spec:
   destination:
-    namespace: {{ default $.Values.app.namespace $app.namespace }}
+    namespace: {{ default $.Values.app.namespace $app.namespace}}
     server: https://kubernetes.default.svc
-  project: form
+  project: my-project
   source:
     path: {{ $app.path }}
     repoURL: {{ $.Values.app.repo }}
