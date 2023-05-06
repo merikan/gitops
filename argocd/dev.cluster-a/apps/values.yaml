@@ -23,8 +23,8 @@ app:
 apps:
   - name: app-a
     path: apps/app-a/k8s/envs/dev
-  # - name: app-b
-  #   path: apps/app-b/envs/dev
+  - name: app-b
+    path: apps/app-b/kz/base
   # - name: app-c
   #   path: apps/app-c/envs/dev
   #   namespace: myapps-dev2
