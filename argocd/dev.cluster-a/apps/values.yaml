@@ -21,12 +21,17 @@ app:
 #   - prune : should automatic pruning be active, true/false (optional)
 #   - selfHeal: should automatoc selfhealing be active, true/false (optional)
 apps:
+  # app-a is pure k8s manifests
   - name: app-a
     path: apps/app-a/k8s/envs/dev
+  # app-b is kz , one level
   - name: app-b
     path: apps/app-b/kz/base
-  # - name: app-c
-  #   path: apps/app-c/envs/dev
+  # app-c is kz , two levels
+  - name: app-c
+    path: apps/app-c/kz/envs/dev
+  # - name: app-x
+  #   path: apps/app-x/envs/dev
   #   namespace: myapps-dev2
   #   syncWave: 3
   #   prune: true
