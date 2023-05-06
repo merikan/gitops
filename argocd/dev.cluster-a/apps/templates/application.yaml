@@ -4,26 +4,27 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ $.Values.argoApp.prefix }}{{ $app.name }}
-  # namespace: {{ default $.Values.app.namespace $app.namespace }}
-  namespace: {{ $.Release.Namespace }}
+  namespace: {{ $.Values.argoApp.namespace }}
   # finalizers:
   # - resources-finalizer.argocd.argoproj.io
   annotations:
     argocd.argoproj.io/sync-wave: '{{ default 0 $app.syncWave }}'
 spec:
+  project: my-project
   destination:
     namespace: {{ default $.Values.app.namespace $app.namespace}}
     server: https://kubernetes.default.svc
-  project: my-project
   source:
+    # directory:
+    #   recurse: true
     path: {{ $app.path }}
     repoURL: {{ $.Values.app.repo }}
     targetRevision: {{ $.Values.app.revision }}
-    kustomize:
-      # namespace: {{ default $.Values.app.namespace $app.namespace }} is added to argocd 2.7
-      commonAnnotations:
-        app.kubernetes.io/managed-by: argocd
-        app.kubernetes.io/part-of: {{ $.Values.app.partOf }}
+    # kustomize:
+    #   # namespace: {{ default $.Values.app.namespace $app.namespace }} is added to argocd 2.7
+    #   commonAnnotations:
+    #     app.kubernetes.io/managed-by: argocd
+    #     app.kubernetes.io/part-of: {{ $.Values.app.partOf }}
   syncPolicy:
     automated:
       prune: {{ default $.Values.app.prune $app.prune }}

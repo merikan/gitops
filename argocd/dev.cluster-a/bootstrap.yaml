@@ -13,7 +13,9 @@ spec:
     repoURL: https://github.com/merikan/gitops
     path: argocd/dev.cluster-a/apps
     targetRevision: main
+    # directory:
+    #   recurse: false
   syncPolicy:
     automated:
-      prune: true
+      prune: false
       selfHeal: true

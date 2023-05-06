@@ -10,7 +10,7 @@ app:
   namespace: myapps-dev
   partOf: myapps
   prune: false
-  selfHeal: false
+  selfHeal: true
 
 # List of argocd applications
 #   Available options:
@@ -22,14 +22,12 @@ app:
 #   - selfHeal: should automatoc selfhealing be active, true/false (optional)
 apps:
   - name: app-a
-    path: apps/app-a/envs/dev
-    syncWave: 0
-  - name: app-b
-    path: apps/app-b/envs/dev
-    syncWave: 0
-  - name: app-c
-    path: apps/app-c/envs/dev
-    namespace: myapps-dev2
-    syncWave: 3
-    prune: true
-    selfHeal: true
+    path: apps/app-a/k8s/envs/dev
+  # - name: app-b
+  #   path: apps/app-b/envs/dev
+  # - name: app-c
+  #   path: apps/app-c/envs/dev
+  #   namespace: myapps-dev2
+  #   syncWave: 3
+  #   prune: true
+  #   selfHeal: true
