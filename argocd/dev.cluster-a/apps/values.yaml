@@ -23,13 +23,13 @@ app:
 apps:
   # app-a is pure k8s manifests
   - name: app-a
-    path: apps/app-a/k8s/envs/dev
+    path: apps/app-a/kz/base
   # app-b is kz , one level
   - name: app-b
     path: apps/app-b/kz/base
   # app-c is kz , two levels
   - name: app-c
-    path: apps/app-c/kz/envs/dev
+    path: apps/app-c/kz/base
   # - name: app-x
   #   path: apps/app-x/envs/dev
   #   namespace: myapps-dev2
